@@ -1,8 +1,51 @@
 
+# Python environment
 venv/
+env/
+.venv/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Database files
 *.db
 *.sqlite3
+
+# Logs and cache
+*.log
+*.pot
+*.mo
+*.pyc
+instance/
+.cache/
+.pytest_cache/
+*.bak
+
+# Environment variables
+.env
+*.env
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
