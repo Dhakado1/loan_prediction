@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Prediction System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Prediction System</h1>
+        <form action="/predict" method="post" class="form-box">
+            
+            <div class="input-group">
+                <label>Gender</label>
+                <input type="text" name="Gender" required>
+            </div>
+
+            <div class="input-group">
+                <label>Married</label>
+                <input type="text" name="Married" required>
+            </div>
+
+            <div class="input-group">
+                <label>Dependents</label>
+                <input type="text" name="Dependents" required>
+            </div>
+
+            <div class="input-group">
+                <label>Education</label>
+                <input type="text" name="Education" required>
+            </div>
+
+            <div class="input-group">
+                <label>Self Employed</label>
+                <input type="text" name="Self_Employed" required>
+            </div>
+
+            <div class="input-group">
+                <label>Applicant Income</label>
+                <input type="number" name="ApplicantIncome" required>
+            </div>
+
+            <div class="input-group">
+                <label>Coapplicant Income</label>
+                <input type="number" name="CoapplicantIncome" required>
+            </div>
+
+            <div class="input-group">
+                <label>Loan Amount</label>
+                <input type="number" name="LoanAmount" required>
+            </div>
+
+            <div class="input-group">
+                <label>Loan Term (days)</label>
+                <input type="number" name="Loan_Amount_Term" required>
+            </div>
+
+            <div class="input-group">
+                <label>Credit History (1/0)</label>
+                <input type="number" name="Credit_History" required>
+            </div>
+
+            <div class="input-group">
+                <label>Property Area</label>
+                <input type="text" name="Property_Area" required>
+            </div>
+
+            <button type="submit" class="btn">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result-box">
+            <h2>{{ prediction }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
