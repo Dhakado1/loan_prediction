@@ -14,6 +14,8 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    user_name = request.form['Name']  # Read name
+
     data = {
         'Gender': request.form['Gender'],
         'Married': request.form['Married'],
@@ -31,7 +33,11 @@ def predict():
     input_data = pd.DataFrame([data])
     prediction = model.predict(input_data)[0]
 
-    result = "Loan Approved" if prediction == 1 else "Loan Rejected"
+    if prediction == 1:
+        result = f"Congratulations {user_name}, your loan is Approved."
+    else:
+        result = f"Sorry {user_name}, your loan is Rejected."
+
     return render_template('index.html', prediction=result)
 
 if __name__ == '__main__':
