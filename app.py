@@ -2,6 +2,7 @@ import joblib
 from flask import Flask, render_template, request
 import pandas as pd
 import os
+
 app = Flask(__name__)
 
 # Load model using joblib
@@ -30,9 +31,9 @@ def predict():
     input_data = pd.DataFrame([data])
     prediction = model.predict(input_data)[0]
 
-    result = "✅ Loan Approved" if prediction == 1 else "❌ Loan Rejected"
+    result = "Loan Approved" if prediction == 1 else "Loan Rejected"
     return render_template('index.html', prediction=result)
 
 if __name__ == '__main__':
-      port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
