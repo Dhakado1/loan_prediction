@@ -5,41 +5,45 @@ import os
 
 app = Flask(__name__)
 
-# Load model using joblib
+# Load model
 model = joblib.load('final_model.joblib')
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', form_data=None)
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    user_name = request.form['Name']  # Read name
+    form_data = request.form  # store submitted values
+
+    user_name = form_data['Name']
 
     data = {
-        'Gender': request.form['Gender'],
-        'Married': request.form['Married'],
-        'Dependents': request.form['Dependents'],
-        'Education': request.form['Education'],
-        'Self_Employed': request.form['Self_Employed'],
-        'ApplicantIncome': float(request.form['ApplicantIncome']),
-        'CoapplicantIncome': float(request.form['CoapplicantIncome']),
-        'LoanAmount': float(request.form['LoanAmount']),
-        'Loan_Amount_Term': float(request.form['Loan_Amount_Term']),
-        'Credit_History': float(request.form['Credit_History']),
-        'Property_Area': request.form['Property_Area']
+        'Gender': form_data['Gender'],
+        'Married': form_data['Married'],
+        'Dependents': form_data['Dependents'],
+        'Education': form_data['Education'],
+        'Self_Employed': form_data['Self_Employed'],
+        'ApplicantIncome': float(form_data['ApplicantIncome']),
+        'CoapplicantIncome': float(form_data['CoapplicantIncome']),
+        'LoanAmount': float(form_data['LoanAmount']),
+        'Loan_Amount_Term': float(form_data['Loan_Amount_Term']),
+        'Credit_History': float(form_data['Credit_History']),
+        'Property_Area': form_data['Property_Area']
     }
 
-    input_data = pd.DataFrame([data])
-    prediction = model.predict(input_data)[0]
+    df = pd.DataFrame([data])
+    pred = model.predict(df)[0]
 
-    if prediction == 1:
+    if pred == 1:
         result = f"Congratulations {user_name}, your loan is Approved."
     else:
         result = f"Sorry {user_name}, your loan is Rejected."
 
-    return render_template('index.html', prediction=result)
+    return render_template("index.html",
+                           prediction=result,
+                           form_data=form_data)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)

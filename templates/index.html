@@ -11,65 +11,76 @@
         <h1>Loan Prediction System</h1>
         <form action="/predict" method="post" class="form-box">
 
-            <!-- Name Field Added -->
             <div class="input-group">
                 <label>Name</label>
-                <input type="text" name="Name" required>
+                <input type="text" name="Name" 
+                    value="{{ form_data.Name if form_data else '' }}" required>
             </div>
 
             <div class="input-group">
                 <label>Gender</label>
-                <input type="text" name="Gender" required>
+                <input type="text" name="Gender"
+                    value="{{ form_data.Gender if form_data else '' }}" required>
             </div>
 
             <div class="input-group">
                 <label>Married</label>
-                <input type="text" name="Married" required>
+                <input type="text" name="Married"
+                    value="{{ form_data.Married if form_data else '' }}" required>
             </div>
 
             <div class="input-group">
                 <label>Dependents</label>
-                <input type="text" name="Dependents" required>
+                <input type="text" name="Dependents"
+                    value="{{ form_data.Dependents if form_data else '' }}" required>
             </div>
 
             <div class="input-group">
                 <label>Education</label>
-                <input type="text" name="Education" required>
+                <input type="text" name="Education"
+                    value="{{ form_data.Education if form_data else '' }}" required>
             </div>
 
             <div class="input-group">
                 <label>Self Employed</label>
-                <input type="text" name="Self_Employed" required>
+                <input type="text" name="Self_Employed"
+                    value="{{ form_data.Self_Employed if form_data else '' }}" required>
             </div>
 
             <div class="input-group">
                 <label>Applicant Income</label>
-                <input type="number" name="ApplicantIncome" required>
+                <input type="number" name="ApplicantIncome"
+                    value="{{ form_data.ApplicantIncome if form_data else '' }}" required>
             </div>
 
             <div class="input-group">
                 <label>Coapplicant Income</label>
-                <input type="number" name="CoapplicantIncome" required>
+                <input type="number" name="CoapplicantIncome"
+                    value="{{ form_data.CoapplicantIncome if form_data else '' }}" required>
             </div>
 
             <div class="input-group">
                 <label>Loan Amount</label>
-                <input type="number" name="LoanAmount" required>
+                <input type="number" name="LoanAmount"
+                    value="{{ form_data.LoanAmount if form_data else '' }}" required>
             </div>
 
             <div class="input-group">
                 <label>Loan Term (days)</label>
-                <input type="number" name="Loan_Amount_Term" required>
+                <input type="number" name="Loan_Amount_Term"
+                    value="{{ form_data.Loan_Amount_Term if form_data else '' }}" required>
             </div>
 
             <div class="input-group">
                 <label>Credit History (1/0)</label>
-                <input type="number" name="Credit_History" required>
+                <input type="number" name="Credit_History"
+                    value="{{ form_data.Credit_History if form_data else '' }}" required>
             </div>
 
             <div class="input-group">
                 <label>Property Area</label>
-                <input type="text" name="Property_Area" required>
+                <input type="text" name="Property_Area"
+                    value="{{ form_data.Property_Area if form_data else '' }}" required>
             </div>
 
             <button type="submit" class="btn">Predict</button>
